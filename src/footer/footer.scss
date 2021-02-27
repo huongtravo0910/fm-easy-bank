@@ -1,0 +1,93 @@
+@import "../style.scss";
+
+.footer {
+  background-color: $darkBlue;
+  color: $white;
+  padding: 2.5em;
+  text-align: center;
+  .container {
+    @include breakpoint-up(large) {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 3fr;
+      grid-template-rows: 1fr auto;
+      grid-template-areas:
+        "logo links1 links2 cta"
+        "social links1 links2 copyright";
+      gap: 1rem;
+      justify-items: start;
+    }
+  }
+
+  &__logo {
+    display: inline-block;
+    margin-bottom: 2rem;
+    @include breakpoint-up(large) {
+      grid-area: logo;
+    }
+  }
+
+  &__social {
+    margin-bottom: 2rem;
+    @include breakpoint-up(large) {
+      grid-area: social;
+      align-self: end;
+    }
+  }
+  &__icon {
+    margin-right: 2rem;
+    cursor: pointer;
+    @include breakpoint-up(large) {
+        margin-right: 1.5rem;
+    }
+    &:hover {
+      fill: $limeGreen;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  &__links {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include breakpoint-up(large) {
+      align-items: start;
+      margin-left: 0.5em;
+    }
+    > span {
+      margin-bottom: 1rem;
+      cursor: pointer;
+    }
+    &.col1 {
+      @include breakpoint-up(large) {
+        grid-area: links1;
+      }
+    }
+
+    &.col2 {
+      @include breakpoint-up(large) {
+        grid-area: links2;
+      }
+    }
+  }
+
+  &__cta {
+    margin-bottom: 2em;
+    @include breakpoint-up(large) {
+      grid-area: cta;
+      text-align: right;
+      justify-self: end;
+    }
+  }
+
+  &__copyright {
+    font-size: 0.8125rem;
+    color: $grayishBlue;
+
+    @include breakpoint-up(large) {
+      grid-area: copyright;
+      //   align-self: end;
+      justify-self: end;
+    }
+  }
+}
